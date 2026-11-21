@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+:root {
+  --lavender: #E9E4F5;
+  --lavender-2: #DDD3F1;
+  --violet: #7A5BB5;
+  --plum: #4B3680;
+  --ink: #2A2A56;
+  --gold: #C9A24B;
+  --orchid: #D47FC4;
+  --paper: #FBFAFF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--lavender);
+    color: var(--ink);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background-color: var(--lavender);
+    background-image:
+      radial-gradient(ellipse 75% 55% at 12% 10%, rgba(221, 211, 241, 0.92) 0%, transparent 65%),
+      radial-gradient(ellipse 65% 50% at 88% 18%, rgba(212, 127, 196, 0.16) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 48%, rgba(251, 250, 255, 0.85) 0%, transparent 72%),
+      radial-gradient(ellipse 70% 55% at 18% 82%, rgba(122, 91, 181, 0.14) 0%, transparent 62%),
+      radial-gradient(ellipse 70% 60% at 85% 88%, rgba(221, 211, 241, 0.88) 0%, transparent 68%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-script {
+  font-family: 'Allura', cursive;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-serif-num {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-hindi {
+  font-family: 'Tiro Devanagari Hindi', serif;
+}
+
+/* Watercolour floral blending & soft edge fade */
+.watercolor-blend {
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(circle at center, black 64%, transparent 98%);
+  mask-image: radial-gradient(circle at center, black 64%, transparent 98%);
+}
+
+/* Royal Doors 3D perspective & swing */
+.doors-stage {
+  perspective: 1650px;
+}
+
+.door-panel {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 1.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+}
+
+.door-left {
+  transform-origin: left center;
+}
+
+.door-right {
+  transform-origin: right center;
+}
+
+.doors-open .door-left {
+  transform: rotateY(-108deg);
+}
+
+.doors-open .door-right {
+  transform: rotateY(108deg);
+}
+
+/* Seal pulsing ring */
+@keyframes sealPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.78;
+  }
+  70% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+}
+
+.animate-seal-pulse {
+  animation: sealPulse 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+/* Gentle floral corner sway */
+@keyframes floralSway {
+  0%, 100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(1.6deg) translate3d(2px, -3px, 0);
+  }
+}
+
+.animate-floral-sway {
+  animation: floralSway 7.5s ease-in-out infinite;
+}
+
+.animate-floral-sway-alt {
+  animation: floralSway 8.8s ease-in-out infinite reverse;
+}
+
+/* Drifting petals */
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.72;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(var(--petal-drift, 48px), 105vh, 0) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+.animate-petal {
+  animation: petalFall var(--petal-duration, 14s) linear var(--petal-delay, 0s) infinite;
+}
+
+/* Triple gold ring draw-in */
+@keyframes drawGoldRing {
+  from {
+    stroke-dashoffset: 1100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ring-draw {
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 1100;
+}
+
+.ring-draw-active {
+  animation: drawGoldRing 2.1s cubic-bezier(0.25, 0.9, 0.3, 1) forwards;
+}
+
+.ring-draw-active-2 {
+  animation: drawGoldRing 2.2s cubic-bezier(0.25, 0.9, 0.3, 1) 0.22s forwards;
+}
+
+.ring-draw-active-3 {
+  animation: drawGoldRing 2.3s cubic-bezier(0.25, 0.9, 0.3, 1) 0.42s forwards;
+}
+
+/* Gentle floating arch */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 5.6s ease-in-out infinite;
+}
+
+/* Flip digit subtle tick */
+@keyframes flipTick {
+  0% {
+    transform: rotateX(-24deg) scaleY(0.94);
+    opacity: 0.82;
+  }
+  100% {
+    transform: rotateX(0deg) scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-flip-tick {
+  transform-origin: center center;
+  animation: flipTick 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Staggered hero fade-in */
+.hero-stagger {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visible .hero-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll reveal for event cards */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .door-panel {
+    transition: opacity 0.25s ease;
+  }
+
+  .doors-open .door-left,
+  .doors-open .door-right {
+    transform: none;
+    opacity: 0;
+  }
+
+  .animate-seal-pulse,
+  .animate-floral-sway,
+  .animate-floral-sway-alt,
+  .animate-petal,
+  .animate-float-gentle,
+  .animate-flip-tick {
+    animation: none !important;
+  }
+
+  .ring-draw {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+
+  .hero-stagger,
+  .reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
